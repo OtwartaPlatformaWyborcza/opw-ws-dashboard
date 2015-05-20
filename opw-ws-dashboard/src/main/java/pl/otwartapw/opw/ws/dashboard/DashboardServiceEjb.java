@@ -100,22 +100,13 @@ public class DashboardServiceEjb implements Serializable {
 
     public Response wynik() {
         try {
-            int k1 = 0, k2 = 0, k3 = 0, k4 = 0, k5 = 0, k6 = 0, k7 = 0, k8 = 0, k9 = 0, k10 = 0, k11 = 0,
-                    votersValid = 0;
+            int k1 = 0, k2 = 0;
+            int votersValid = 0;
 
             List<OpwWynik> currentElectionResults = wynikBean.fetchCurrentElectionResults();
             for (OpwWynik wynik : currentElectionResults) {
                 k1 += wynik.getK1();
                 k2 += wynik.getK2();
-                k3 += wynik.getK3();
-                k4 += wynik.getK4();
-                k5 += wynik.getK5();
-                k6 += wynik.getK6();
-                k7 += wynik.getK7();
-                k8 += wynik.getK8();
-                k9 += wynik.getK9();
-                k10 += wynik.getK10();
-                k11 += wynik.getK11();
                 votersValid += wynik.getLKartWydanych();
             }
 
@@ -135,15 +126,7 @@ public class DashboardServiceEjb implements Serializable {
             dashboard.setFrekwencjaAll(FREKWENCJA_ALL);
             dashboard.getKandydatList().get(0).setGlosow(k1);
             dashboard.getKandydatList().get(1).setGlosow(k2);
-            dashboard.getKandydatList().get(2).setGlosow(k3);
-            dashboard.getKandydatList().get(3).setGlosow(k4);
-            dashboard.getKandydatList().get(4).setGlosow(k5);
-            dashboard.getKandydatList().get(5).setGlosow(k6);
-            dashboard.getKandydatList().get(6).setGlosow(k7);
-            dashboard.getKandydatList().get(7).setGlosow(k8);
-            dashboard.getKandydatList().get(8).setGlosow(k9);
-            dashboard.getKandydatList().get(9).setGlosow(k10);
-            dashboard.getKandydatList().get(10).setGlosow(k11);
+
             //TODO Dodac komisje okregowe
             return Response.ok().entity(dashboard).build();
         } catch (Exception e) {
